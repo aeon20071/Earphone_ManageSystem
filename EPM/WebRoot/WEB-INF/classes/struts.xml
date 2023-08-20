@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<!-- START SNIPPET:xworkSample -->
+<struts>
+	<package name="default" extends="struts-default">
+	
+		<!-- 登录 -->
+
+		<action name="login" class="org.action.LoginAction">
+			<result name="success">main.jsp</result>
+			<result name="error">404page.jsp</result>
+		</action>
+		
+		<!-- 注册 -->
+
+		<action name="register" class="org.action.LoginAction" method="register">
+			<result name="success">login.jsp</result>
+			<result name="error">404page.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+		
+		<!-- 搜索 -->
+
+		<action name="bookList" class="org.action.BookAction" method="list">
+			<result name="success">bookList.jsp</result>
+			<result name="error">bookList.jsp</result>
+		</action>
+		
+		<!-- 添加 -->
+		
+		<action name="bookInsert" class="org.action.BookAction" method="insert">
+			<result name="success">bookList.jsp</result>
+		</action>
+		
+		<action name="bookInsertOK" class="org.action.BookAction" method="insertOK">
+			<result name="success" type="redirectAction">bookList</result>
+			<result name="error">bookInsert.jsp</result>
+			<result name="input">bookInsert.jsp</result>
+		</action>
+		
+		<!-- 详情 -->
+		
+		<action name="bookDetails" class="org.action.BookAction" method="details">
+			<result name="success">details.jsp</result>
+		</action>
+		
+		<action name="bookDetailsOK" class="org.action.BookAction" method="detailsOK">
+			<result name="success" type="redirectAction">bookList</result>
+			<result name="error">details.jsp</result>
+		</action>
+		
+		<!-- 修改 -->
+		
+		<action name="bookUpdate" class="org.action.BookAction" method="update">
+			<result name="success">bookUpdate.jsp</result>
+		</action>
+		
+		<action name="bookUpdateOK" class="org.action.BookAction" method="updateOK">
+			<result name="success" type="redirectAction">bookList</result>
+			<result name="error">bookUpdate.jsp</result>
+			<result name="input">bookUpdate.jsp</result>
+		</action>
+		
+		<!-- 删除 -->
+		
+		<action name="bookDelete" class="org.action.BookAction" method="delete">
+			<result name="success" type="redirectAction">bookList</result>
+			<result name="error" type="redirectAction">bookList</result>
+		</action>
+
+	</package>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+</struts>
